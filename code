@@ -1,0 +1,47 @@
+import tkinter as tk 
+from tkinter import filedialog
+import pyautogui
+from PIL import Image
+from pytesseract import *
+pytesseract.tesseract_cmd = r'C:\Users\dimab\AppData/Local\Programs\tesseract-OCR\tesseract.exe'
+
+#user info
+class user_data:
+    def __init__(self,firstName,lastName): #get user name
+        self.__firstName=firstName 
+        self.__lastName=lastName
+
+window=tk.Tk()
+window.title("Image Converter to Text") #set title of the program
+window.geometry("600x400") #size of the program
+window.configure(bg='plum1') #background colour
+
+#Intro text
+hello=tk.Label(text="Hello and welcome to the image to text converter! ",bg='HotPink1',fg='black')
+hello.pack() #intro text
+
+#Extracts the text from the photo
+img=Image.open("myimg.png") #Opens and identifies the given image file.
+output = pytesseract.image_to_string(img) #Returns unmodified output as string from Tesseract OCR processing
+
+textIs=tk.Label(text="Your text is:",bg='HotPink1',fg='black') #prints "the text is" on screen
+textIs.pack(pady=20)
+
+#shows the text from the image on the screen
+textUser=tk.Label(text=output,bg='HotPink1',fg='black') 
+textUser.pack(pady=20)
+
+#will save the text from the photo as a text file
+def save_file(): #open a new empthy text file
+    file = filedialog.asksaveasfilename(
+    filetypes=[("txt file", ".txt")],
+    defaultextension=".txt") #default extension to append to file (save dialogs)
+
+    fob=open(file,'w')
+    fob.write(output) #the text will be written in the text file
+    fob.close()
+button=tk.Button(text="Would you like to save the text as a file? Click here!",bg='black',fg="white",command=save_file) #create a button the user will click if intrested in saving the text
+button.pack(pady=35)
+
+tk.mainloop()
+
