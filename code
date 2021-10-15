@@ -3,7 +3,7 @@ from tkinter import filedialog
 import pyautogui
 from PIL import Image
 from pytesseract import *
-pytesseract.tesseract_cmd = r'C:\Users\dimab\AppData/Local\Programs\tesseract-OCR\tesseract.exe'
+pytesseract.tesseract_cmd = r'C:\Users\AppData/Local\Programs\tesseract-OCR\tesseract.exe'
 
 #user info
 class user_data:
