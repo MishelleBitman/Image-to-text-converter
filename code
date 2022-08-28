@@ -32,7 +32,7 @@ textUser=tk.Label(text=output,bg='HotPink1',fg='black')
 textUser.pack(pady=20)
 
 #will save the text from the photo as a text file
-def save_file(): #open a new empthy text file
+def save_file(): #open a new empty text file
     file = filedialog.asksaveasfilename(
     filetypes=[("txt file", ".txt")],
     defaultextension=".txt") #default extension to append to file (save dialogs)
@@ -40,7 +40,7 @@ def save_file(): #open a new empthy text file
     fob=open(file,'w')
     fob.write(output) #the text will be written in the text file
     fob.close()
-button=tk.Button(text="Would you like to save the text as a file? Click here!",bg='black',fg="white",command=save_file) #create a button the user will click if intrested in saving the text
+button=tk.Button(text="Would you like to save the text as a file? Click here!",bg='black',fg="white",command=save_file) #create a button the user will click if interested in saving the text
 button.pack(pady=35)
 
 tk.mainloop()
